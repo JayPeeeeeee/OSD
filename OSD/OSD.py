@@ -1,11 +1,12 @@
 import cv2 as cv
-import json
+import jsonpickle
 from MenuItem import MenuItem
 from Settings import Settings
 from Setting import Setting
 from NumberSetting import NumberSetting
 from BooleanSetting import BooleanSetting
-from SettingType import SettingType
+from TupleSetting import TupleSetting
+from ColorSetting import ColorSetting
 
 areMenusActive = False
 activeMenu = None
@@ -45,67 +46,54 @@ def getSettings():
 
     showMeanTemperature = BooleanSetting("Show mean temperature")
     showMeanTemperature.value = False
-    #showMeanTemperature.type = SettingType.BOOLEAN
     settings.showMeanTemperature = showMeanTemperature
 
     showFoundFace = BooleanSetting("Show found face")
     showFoundFace.value = False
-    #showFoundFace.type = SettingType.BOOLEAN
     settings.showFoundFace = showFoundFace
 
     showWarmestZones = BooleanSetting("Show warmest zones")
     showWarmestZones.value = False
-    #showWarmestZones.type = SettingType.BOOLEAN
     settings.showWarmestZones = showWarmestZones
 
-    screenPosition = Setting("Screen position")
-    #screenPosition.value = (0, 50)
-    #screenPosition.type = SettingType.POSITION
+    screenPosition = TupleSetting("Screen position")
+    screenPosition.value = (0, 50)
     settings.screenPosition = screenPosition
 
-    screenDimensions = Setting("Screen dimensions")
-    #screenDimensions.value = (360, 270)
-    #screenDimensions.type = SettingType.DIMENSIONS
+    screenDimensions = TupleSetting("Screen dimensions")
+    screenDimensions.value = (360, 270)
     settings.screenDimensions = screenDimensions
 
     threshold = NumberSetting("Threshold")
     threshold.value = 35.7
-    #threshold.type = SettingType.NUMBER
     settings.threshold = threshold
 
     offset = NumberSetting("Offset")
     offset.value = 0.5
-    #offset.type = SettingType.NUMBER
     settings.offset = offset
 
     epsilon = NumberSetting("Epsilon")
     epsilon.value = 1.5
-    #epsilon.type = SettingType.NUMBER
     settings.epsilon = epsilon
 
     measurementsPerMean = NumberSetting("Measurements per mean")
     measurementsPerMean.value = 3
-    #measurementsPerMean.type = SettingType.NUMBER
     settings.measurementsPerMean = measurementsPerMean
 
-    brightness = Setting("Brightness")
-    #brightness.value = 0.75
-    #brightness.type = SettingType.NUMBER
+    brightness = NumberSetting("Brightness")
+    brightness.value = 0.75
     settings.brightness = brightness
 
-    alarmColor = Setting("Alarm color")
-    #alarmColor.value = (0, 255, 0, 255)
-    #alarmColor.type = SettingType.COLOR
+    alarmColor = ColorSetting("Alarm color")
+    alarmColor.value = (0, 255, 0, 255)
     settings.alarmColor = alarmColor
 
-    okColor = Setting("OK color")
-    #okColor.value = (0, 0, 255, 255)
-    #okColor.type = SettingType.COLOR
+    okColor = ColorSetting("OK color")
+    okColor.value = (0, 0, 255, 255)
     settings.okColor = okColor
 
-    idleColor = Setting("Idle color")
-    #idleColor.value = (255, 0, 0, 255)
-    #idleColor.type = SettingType.COLOR
+    idleColor = ColorSetting("Idle color")
+    idleColor.value = (255, 0, 0, 255)
     settings.idleColor = idleColor
 
     return settings
@@ -126,6 +114,9 @@ def initMenus():
 
 def createMenus():
     settings = getSettings()
+    f = open("D:\Projects\OSD\OSD Settings.json", "w")
+    f.write(jsonpickle.encode(settings))
+    f.close()
 
     smtMenu = MenuItem()
     smtMenu.setting = settings.showMeanTemperature

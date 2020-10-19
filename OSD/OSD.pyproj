@@ -24,6 +24,9 @@
     <Compile Include="BooleanSetting.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ColorSetting.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MenuItem.py">
       <SubType>Code</SubType>
     </Compile>
@@ -38,6 +41,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SettingType.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TupleSetting.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
