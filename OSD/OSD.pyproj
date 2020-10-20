@@ -40,7 +40,7 @@
     <Compile Include="Settings.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SettingType.py">
+    <Compile Include="ButtonInput.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TupleSetting.py">

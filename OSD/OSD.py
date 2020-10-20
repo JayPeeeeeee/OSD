@@ -1,5 +1,7 @@
+import os
 import cv2 as cv
 import jsonpickle
+from ButtonInput import ButtonInput
 from MenuItem import MenuItem
 from Settings import Settings
 from Setting import Setting
@@ -8,33 +10,47 @@ from BooleanSetting import BooleanSetting
 from TupleSetting import TupleSetting
 from ColorSetting import ColorSetting
 
+settingsFile = "..\OSD Settings.json"
+settings: Settings = None
 areMenusActive = False
 activeMenu = None
 selectedMenu = None
 root = None
+editToken = None
+buttonInput = None
 
-def readInput():
-    return cv.waitKey(1) & 0xFF
+def readInput() -> ButtonInput:
+    buttonInput = None
+
+    input = cv.waitKey(1) & 0xFF
+
+    if input == ord('u'):
+        buttonInput = ButtonInput.UP
+
+    if input == ord('d'):
+        buttonInput = ButtonInput.DOWN
+
+    if input == ord('o'):
+        buttonInput = ButtonInput.OK
+    
+    return buttonInput
 
 def handleMenuNavigation():
     keyPressed = readInput()
-
-    if keyPressed & 0xFF == ord('q'):
-        return False
 
     global activeMenu, selectedMenu
 
     activeMenuIndex = selectedMenu.menuItems.index(activeMenu)    
 
-    if keyPressed == ord('u'):
+    if keyPressed == ButtonInput.UP:
         if activeMenuIndex > 0:
             activeMenu = selectedMenu.menuItems[activeMenuIndex - 1]
 
-    if keyPressed == ord('d'):
+    if keyPressed == ButtonInput.DOWN:
         if activeMenuIndex < len(selectedMenu.menuItems) - 1:
             activeMenu = selectedMenu.menuItems[activeMenuIndex + 1]
 
-    if keyPressed == ord('o'):
+    if keyPressed == ButtonInput.OK:
         selectedMenu = activeMenu
         if selectedMenu.menuItems != None and len(selectedMenu.menuItems) > 0 :
             activeMenu = selectedMenu.menuItems[0]
@@ -42,8 +58,20 @@ def handleMenuNavigation():
     return True
 
 def getSettings():
-    settings = Settings()
+    global settingsFile, settings
 
+    if os.path.isfile(settingsFile):
+        f = open(settingsFile, "r")
+        settings = jsonpickle.decode(f.read())
+        f.close()        
+    else:
+        settings = getDefaultSettings()
+        saveSettings()
+
+    return settings
+
+def getDefaultSettings():
+    settings = Settings()
     showMeanTemperature = BooleanSetting("Show mean temperature")
     showMeanTemperature.value = False
     settings.showMeanTemperature = showMeanTemperature
@@ -66,10 +94,18 @@ def getSettings():
 
     threshold = NumberSetting("Threshold")
     threshold.value = 35.7
+    threshold.unit = 'deg'
+    threshold.step = 0.1
+    threshold.minimum = 35
+    threshold.maximum = 40
     settings.threshold = threshold
 
     offset = NumberSetting("Offset")
     offset.value = 0.5
+    offset.unit = 'def'
+    offset.step = 0.1
+    offset.minimum = 0
+    offset.maximum = 2
     settings.offset = offset
 
     epsilon = NumberSetting("Epsilon")
@@ -100,6 +136,10 @@ def getSettings():
 
 def saveSettings():
     # TODO!
+    global settingsFile, settings
+    f = open(settingsFile, "w")
+    f.write(jsonpickle.encode(settings))
+    f.close()
     return False
 
 def initMenus():
@@ -114,9 +154,6 @@ def initMenus():
 
 def createMenus():
     settings = getSettings()
-    f = open("D:\Projects\OSD\OSD Settings.json", "w")
-    f.write(jsonpickle.encode(settings))
-    f.close()
 
     smtMenu = MenuItem()
     smtMenu.setting = settings.showMeanTemperature
@@ -175,25 +212,16 @@ def exitMenus():
     global areMenusActive
     areMenusActive = False
 
-def showEditNumberScreen(frame, setting: Setting, unit: str, step: float):
-    color = (0, 0, 255, 255)
-    cv.putText(frame, "{:.1f}".format(setting.value) + unit, (0,50) , cv.FONT_HERSHEY_SIMPLEX, 1, color, 1)
-    keyPressed = readInput()
-
-    if keyPressed == ord('o'):
-        return True
-
-    if keyPressed == ord('u'):
-        setting.value += step
-
-    if keyPressed == ord('d'):
-        setting.value -= step
-
-    return False
-
-
 def editSetting(setting: Setting, frame):
-    setting.show()
+    setting.show(frame)
+    #read GPIO
+    buttonInput = readInput()
+    #edit + current stage
+    global editToken
+    editToken = setting.edit(buttonInput, editToken)
+
+    if editToken == None:
+        return True
 
     return False
 
@@ -205,7 +233,7 @@ while(True):
 
     if not areMenusActive:
         keyPressed = readInput()
-        if keyPressed == ord('u') or keyPressed == ord('d') or keyPressed == ord('o'):
+        if keyPressed != None:
             areMenusActive = True
             initMenus()
     else:
@@ -223,6 +251,7 @@ while(True):
                 break;
         else:        
             if editSetting(selectedMenu.setting, frame):
+                saveSettings()
                 exitMenus()
 
     cv.imshow('frame', frame)

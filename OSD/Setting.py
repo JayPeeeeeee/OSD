@@ -1,14 +1,14 @@
-from SettingType import SettingType
+from ButtonInput import ButtonInput
 
 class Setting(object):
     """description of class"""
 
     def __init__(self, name):
         self.name = name
-        #self.value = None
-        #self.type: SettingType = SettingType.NUMBER
 
     def show(self, image):
         print("Showing " + self.name)
 
+    def edit(self, input: ButtonInput, token: str) -> str:
+        print("Editing")
 
