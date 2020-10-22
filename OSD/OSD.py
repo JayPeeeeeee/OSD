@@ -96,40 +96,63 @@ def getDefaultSettings():
     threshold.value = 35.7
     threshold.unit = 'deg'
     threshold.step = 0.1
+    threshold.decimals = 1
     threshold.minimum = 35
     threshold.maximum = 40
     settings.threshold = threshold
 
     offset = NumberSetting("Offset")
     offset.value = 0.5
-    offset.unit = 'def'
+    offset.unit = 'deg'
     offset.step = 0.1
+    offset.decimals = 1
     offset.minimum = 0
     offset.maximum = 2
     settings.offset = offset
 
     epsilon = NumberSetting("Epsilon")
     epsilon.value = 1.5
+    epsilon.unit = "err"
+    epsilon.step = 0.1
+    epsilon.decimals = 1
+    epsilon.minimum = 0
+    epsilon.maximum = 3
     settings.epsilon = epsilon
 
     measurementsPerMean = NumberSetting("Measurements per mean")
     measurementsPerMean.value = 3
+    measurementsPerMean.unit = "m/m"
+    measurementsPerMean.step = 1
+    measurementsPerMean.decimals = 0
+    measurementsPerMean.minimum = 1
+    measurementsPerMean.maximum = 5
     settings.measurementsPerMean = measurementsPerMean
 
     brightness = NumberSetting("Brightness")
-    brightness.value = 0.75
+    brightness.value = 75
+    brightness.unit = "%"
+    brightness.step = 1
+    brightness.decimals = 0
+    brightness.minimum = 0
+    brightness.maximum = 100
     settings.brightness = brightness
 
     alarmColor = ColorSetting("Alarm color")
-    alarmColor.value = (0, 255, 0, 255)
+    alarmColor.red = 255
+    alarmColor.green = 0
+    alarmColor.blue = 0
     settings.alarmColor = alarmColor
 
     okColor = ColorSetting("OK color")
-    okColor.value = (0, 0, 255, 255)
+    okColor.red = 0
+    okColor.green = 255
+    okColor.blue = 0
     settings.okColor = okColor
 
     idleColor = ColorSetting("Idle color")
-    idleColor.value = (255, 0, 0, 255)
+    idleColor.red = 0
+    idleColor.green = 0
+    idleColor.blue = 255
     settings.idleColor = idleColor
 
     return settings
@@ -230,7 +253,7 @@ cap = cv.VideoCapture(0)
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
-
+    
     if not areMenusActive:
         keyPressed = readInput()
         if keyPressed != None:

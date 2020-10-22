@@ -7,7 +7,7 @@ class TupleSetting(Setting):
         super().__init__(name)
         self.value = (0, 0)
 
-    def show(image):
-        print("Showing tuple")
+    def show(self, image):
+        return
 
 
