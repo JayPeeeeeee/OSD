@@ -250,11 +250,10 @@ def editSetting(setting, frame):
     return False
 
 cap = cv.VideoCapture(0)
-
+print("Threshold: " + settings.threshold.value)
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
-    print("Read frame")
     
     if not areMenusActive:
         keyPressed = readInput()
