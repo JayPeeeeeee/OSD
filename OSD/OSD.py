@@ -21,17 +21,18 @@ buttonInput = None
 
 def readInput():
     buttonInput = None
+    return 
 
-    input = cv.waitKey(1) & 0xFF
+    #input = cv.waitKey(1) & 0xFF
 
-    if input == ord('u'):
-        buttonInput = ButtonInput.UP
+    #if input == ord('u'):
+    #    buttonInput = ButtonInput.UP
 
-    if input == ord('d'):
-        buttonInput = ButtonInput.DOWN
+    #if input == ord('d'):
+    #    buttonInput = ButtonInput.DOWN
 
-    if input == ord('o'):
-        buttonInput = ButtonInput.OK
+    #if input == ord('o'):
+    #    buttonInput = ButtonInput.OK
     
     return buttonInput
 
@@ -253,6 +254,7 @@ cap = cv.VideoCapture(0)
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
+    print("Read frame")
     
     if not areMenusActive:
         keyPressed = readInput()
@@ -277,7 +279,7 @@ while(True):
                 saveSettings()
                 exitMenus()
 
-    cv.imshow('frame', frame)
+    #cv.imshow('frame', frame)
     
     
 
