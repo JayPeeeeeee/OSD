@@ -11,7 +11,7 @@ from TupleSetting import TupleSetting
 from ColorSetting import ColorSetting
 
 settingsFile = "..\OSD Settings.json"
-settings: Settings = None
+settings = None
 areMenusActive = False
 activeMenu = None
 selectedMenu = None
@@ -19,7 +19,7 @@ root = None
 editToken = None
 buttonInput = None
 
-def readInput() -> ButtonInput:
+def readInput():
     buttonInput = None
 
     input = cv.waitKey(1) & 0xFF
@@ -235,7 +235,7 @@ def exitMenus():
     global areMenusActive
     areMenusActive = False
 
-def editSetting(setting: Setting, frame):
+def editSetting(setting, frame):
     setting.show(frame)
     #read GPIO
     buttonInput = readInput()

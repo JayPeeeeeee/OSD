@@ -7,18 +7,18 @@ class NumberSetting(Setting):
 
     def __init__(self, name):
         super().__init__(name)
-        self.value: float = 1
-        self.unit: str = ""
-        self.step: float = 1
-        self.decimals: int = 1
-        self.minimum: float = 0
-        self.maximum: float = 10
+        self.value = 1
+        self.unit = ""
+        self.step = 1
+        self.decimals = 1
+        self.minimum = 0
+        self.maximum = 10
 
     def show(self, image):
         color = (255, 0, 0)
         cv.putText(image, ("{:." + str(self.decimals) + "f}").format(round(self.value, self.decimals)) + self.unit, (0,50) , cv.FONT_HERSHEY_SIMPLEX, 1, color, 1)
 
-    def edit(self, input: ButtonInput, token: str) -> str:
+    def edit(self, input, token):
         if input == ButtonInput.OK:
             return None
 

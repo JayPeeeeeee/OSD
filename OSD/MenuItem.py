@@ -8,7 +8,7 @@ class MenuItem(object):
         self.menuItems = None
         self.setting = None
 
-    def getDisplayName(self) -> str:
+    def getDisplayName(self):
         if self.setting != None:
             return self.setting.name
         else:

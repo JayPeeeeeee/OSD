@@ -7,9 +7,9 @@ class ColorSetting(Setting):
 
     def __init__(self, name):
         super().__init__(name)
-        self.red: int = 0
-        self.green: int = 0
-        self.blue: int = 0
+        self.red = 0
+        self.green = 0
+        self.blue = 0
 
     def show(self, image):
         font = cv.FONT_HERSHEY_SIMPLEX
@@ -29,7 +29,7 @@ class ColorSetting(Setting):
 
         cv.putText(image, str(self.blue), (x, 50), font, fontScale, (255, 0, 0), fontThickness)
 
-    def edit(self, input: ButtonInput, token: str) -> str:
+    def edit(self, input, token):
         if token == None or token == "R":
             if input == ButtonInput.OK:
                 return "G"
@@ -51,7 +51,7 @@ class ColorSetting(Setting):
                 self.blue = self.__editColorComponent(self.blue, input)
                 return "B"
 
-    def __editColorComponent(self, component: int, input: ButtonInput) -> int:
+    def __editColorComponent(self, component, input):
 
         if input == ButtonInput.UP:
             if component < 255:

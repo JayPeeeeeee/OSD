@@ -9,6 +9,6 @@ class Setting(object):
     def show(self, image):
         print("Showing " + self.name)
 
-    def edit(self, input: ButtonInput, token: str) -> str:
+    def edit(self, input, token):
         print("Editing")
 

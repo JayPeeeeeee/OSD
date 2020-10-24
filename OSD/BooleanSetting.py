@@ -7,7 +7,7 @@ class BooleanSetting(Setting):
 
     def __init__(self, name):
         super().__init__(name)
-        self.value: bool = False
+        self.value = False
 
     def show(self, image):
         font = cv.FONT_HERSHEY_SIMPLEX
