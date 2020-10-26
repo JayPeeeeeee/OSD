@@ -3,6 +3,7 @@ import cv2 as cv
 import jsonpickle
 import sysv_ipc as ipc
 import time
+import RPi.GPIO as GPIO   
 from subprocess import call
 from threading import Thread
 from ButtonInput import ButtonInput
@@ -256,8 +257,13 @@ def editSetting(setting, frame):
 
 def startDisplay():
     call(["../../SACLeptonRPi/SACDisplayMixer/OGLESSimpleImageWithIPC"])
+   
+def my_callback(channel):  
+    print("Rising edge detected")
 
-
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
+GPIO.add_event_detect(24, GPIO.RISING, callback=my_callback)
 th1 = Thread(target=startDisplay)
 th1.start()
 time.sleep(1)
@@ -301,7 +307,6 @@ while(True):
                 exitMenus()
 
     shm.write(frame)
-    #cv.imshow('frame', frame)
     
     
 
