@@ -178,6 +178,7 @@ def initMenus():
 
 def createMenus():
     settings = getSettings()
+    print("Threshold: " + settings.threshold.value)
 
     smtMenu = MenuItem()
     smtMenu.setting = settings.showMeanTemperature
@@ -250,7 +251,6 @@ def editSetting(setting, frame):
     return False
 
 cap = cv.VideoCapture(0)
-print("Threshold: " + settings.threshold.value)
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
@@ -260,6 +260,9 @@ while(True):
         if keyPressed != None:
             areMenusActive = True
             initMenus()
+        else:
+            print("Measure temp")
+            print("Show LEDs")
     else:
         # Display the resulting frame
         if selectedMenu.menuItems != None and len(selectedMenu.menuItems) > 0:
