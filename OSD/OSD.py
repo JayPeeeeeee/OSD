@@ -1,6 +1,10 @@
 import os
 import cv2 as cv
 import jsonpickle
+import sysv_ipc as ipc
+import time
+from subprocess import call
+from threading import Thread
 from ButtonInput import ButtonInput
 from MenuItem import MenuItem
 from Settings import Settings
@@ -250,7 +254,22 @@ def editSetting(setting, frame):
 
     return False
 
+def startDisplay():
+    call(["../../SACLeptonRPi/SACDisplayMixer/OGLESSimpleImageWithIPC"])
+
+
+th1 = Thread(target=startDisplay)
+th1.start()
+time.sleep(1)
+
+key = ipc.ftok(".", ord('i'))
+shm = ipc.SharedMemory(key, 0, 0)
+
 cap = cv.VideoCapture(0)
+time.sleep(0.5)
+
+shm.attach()
+
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
@@ -281,10 +300,12 @@ while(True):
                 saveSettings()
                 exitMenus()
 
+    shm.write(frame)
     #cv.imshow('frame', frame)
     
     
 
 # When everything done, release the capture
+shm.detach()
 cap.release()
 cv.destroyAllWindows()
