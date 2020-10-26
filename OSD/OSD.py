@@ -263,7 +263,7 @@ def my_callback(channel):
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
-GPIO.add_event_detect(24, GPIO.RISING, callback=my_callback)
+GPIO.add_event_detect(5, GPIO.RISING, callback=my_callback)
 th1 = Thread(target=startDisplay)
 th1.start()
 time.sleep(1)
