@@ -311,7 +311,7 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
                 
     #key = cv.waitKey(1) & 0xFF
     rawCapture.truncate(0)
-    shm.write(frame)
+    shm.write(cv.flip(frame, 0))
     
     
 
