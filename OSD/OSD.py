@@ -306,7 +306,7 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
                 saveSettings()
                 exitMenus()
                 
-    key = cv2.waitKey(1) & 0xFF
+    key = cv.waitKey(1) & 0xFF
     rawCapture.truncate(0)
     shm.write(frame)
     
