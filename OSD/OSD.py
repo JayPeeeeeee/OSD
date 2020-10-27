@@ -14,6 +14,8 @@ from BooleanSetting import BooleanSetting
 from TupleSetting import TupleSetting
 from ColorSetting import ColorSetting
 from InputManager import InputManager
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 
 settingsFile = "..\OSD Settings.json"
 settings = None
@@ -184,7 +186,6 @@ def initMenus():
 
 def createMenus():
     settings = getSettings()
-    print("Threshold: " + str(settings.threshold.value))
 
     smtMenu = MenuItem()
     smtMenu.setting = settings.showMeanTemperature
@@ -266,12 +267,15 @@ time.sleep(1)
 key = ipc.ftok(".", ord('i'))
 shm = ipc.SharedMemory(key, 0, 0)
 
-cap = cv.VideoCapture(0)
+camera = PiCamera()
+camera.resolution = (640, 480)
+rawCapture = PiRGBArray(camera, size=(640, 480))
+#cap = cv.VideoCapture(0)
 time.sleep(0.5)
 
 shm.attach()
 
-while(True):
+for frame in camera.capture_continuous(rawCapture, format="rgb", use_video_port=True):
     # Capture frame-by-frame
     ret, frame = cap.read()
     
