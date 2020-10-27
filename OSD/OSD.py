@@ -75,6 +75,7 @@ def getSettings():
         settings = jsonpickle.decode(f.read())
         f.close()        
     else:
+        print(settingsFile + " is not a file")
         settings = getDefaultSettings()
         saveSettings()
 
