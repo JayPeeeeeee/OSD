@@ -5,16 +5,16 @@ class Settings(object):
 
     def __init__(self):
         self.showMeanTemperature = None
-        self.showFoundFace
-        self.showWarmestZones
-        self.screenPosition
-        self.screenDimensions
-        self.threshold
-        self.offset
-        self.epsilon
-        self.measurementsPerMean
-        self.brightness
-        self.alarmColor
-        self.okColor
-        self.idleColor
+        self.showFoundFace = None
+        self.showWarmestZones = None
+        self.screenPosition = None
+        self.screenDimensions = None
+        self.threshold = None
+        self.offset = None
+        self.epsilon = None
+        self.measurementsPerMean = None
+        self.brightness = None
+        self.alarmColor = None
+        self.okColor = None
+        self.idleColor = None
 
