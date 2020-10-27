@@ -73,15 +73,16 @@ def handleMenuNavigation():
 def getSettings():
     global settingsFile, settings
 
-    if os.path.isfile(settingsFile):
-        print("Reading settings from file")
-        f = open(settingsFile, "r")
-        settings = jsonpickle.decode(f.read())
-        f.close()        
-    else:
-        print(settingsFile + " is not a file, getting default settings")
-        settings = getDefaultSettings()
-        saveSettings()
+    if settings == None:
+        if os.path.isfile(settingsFile):
+            print("Reading settings from file")
+            f = open(settingsFile, "r")
+            settings = jsonpickle.decode(f.read())
+            f.close()        
+        else:
+            print(settingsFile + " is not a file, getting default settings")
+            settings = getDefaultSettings()
+            saveSettings()
 
     return settings
 
