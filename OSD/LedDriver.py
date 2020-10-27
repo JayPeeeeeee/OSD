@@ -32,5 +32,5 @@ class LedDriver(object):
         self.b.stop()
         GPIO.cleanup()
 
-    def _map(self, x, in_min, in_max, out_min, out_max):
+    def _map(x, in_min, in_max, out_min, out_max):
         return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
