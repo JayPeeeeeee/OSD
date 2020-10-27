@@ -71,6 +71,7 @@ def getSettings():
     global settingsFile, settings
 
     if os.path.isfile(settingsFile):
+        print("Reading settings from file")
         f = open(settingsFile, "r")
         settings = jsonpickle.decode(f.read())
         f.close()        
