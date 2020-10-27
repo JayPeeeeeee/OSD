@@ -45,7 +45,8 @@ def readInput():
     return buttonInput
 
 def handleMenuNavigation():
-    keyPressed = readInput()
+    global inputManager
+    keyPressed = inputManager.read()
 
     global activeMenu, selectedMenu
 
@@ -245,9 +246,10 @@ def exitMenus():
     areMenusActive = False
 
 def editSetting(setting, frame):
+    global inputManager
     setting.show(frame)
     #read GPIO
-    buttonInput = readInput()
+    buttonInput = inputManager.read()
     #edit + current stage
     global editToken
     editToken = setting.edit(buttonInput, editToken)
@@ -284,7 +286,7 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
     frame = data.array
 
     if not areMenusActive:
-        keyPressed = readInput()
+        keyPressed = inputManager.read()
         if keyPressed != None:
             areMenusActive = True
             initMenus()
