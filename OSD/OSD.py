@@ -327,6 +327,7 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
     
 
 # When everything done, release the capture
+ledDriver.stop()
 shm.detach()
 cap.release()
 cv.destroyAllWindows()
