@@ -300,10 +300,13 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
         else:
             # Measure temp
             temp = random.randint(33, 38)
+            brightness = settings.brightness.value
             if temp > settings.threshold.value:
-                ledDriver.output(255, 0, 0, 100)
+                alarmColor = settings.alarmColor
+                ledDriver.output(alarmColor.red, alarmColor.green, alarmColor.blue, brightness)
             else:
-                ledDriver.output(0, 255, 0, 100)
+                okColor = settings.okColor
+                ledDriver.output(okColor.red, okColor.green, okColor.blue, brightness)
     else:
         # Display the resulting frame
         if selectedMenu.menuItems != None and len(selectedMenu.menuItems) > 0:
