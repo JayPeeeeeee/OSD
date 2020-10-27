@@ -7,16 +7,16 @@ class LedDriver(object):
         GPIO.setmode(GPIO.BCM)
 
         GPIO.setup(r, GPIO.OUT)
-        self.r = GPIO.PWM(r, 255)
+        self.r = GPIO.PWM(r, 100)
         self.r.start(0)
 
         GPIO.setup(g, GPIO.OUT)
-        self.g = GPIO.PWM(g, 255)
+        self.g = GPIO.PWM(g, 100)
         self.g.start(0)
 
         GPIO.setup(b, GPIO.OUT)
-        self.b = GPIO.PWM(b, 255)
-        self.b.start(255)
+        self.b = GPIO.PWM(b, 100)
+        self.b.start(100)
 
         
 
