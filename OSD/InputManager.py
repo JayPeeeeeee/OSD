@@ -22,11 +22,11 @@ class InputManager(object):
         print("Up!")
         self._buttonInput = ButtonInput.UP
 
-    def _onOkPressed(self):
+    def _onOkPressed(self, channel):
         print("OK!")
         self._buttonInput = ButtonInput.OK
 
-    def _onDownPressed(self):
+    def _onDownPressed(self, channel):
         print("Down!")
         self._buttonInput = ButtonInput.DOWN
 
