@@ -79,6 +79,7 @@ def getSettings():
             f = open(settingsFile, "r")
             settings = jsonpickle.decode(f.read())
             f.close()        
+            print("OK R" + str(settings.okColor.red))
         else:
             print(settingsFile + " is not a file, getting default settings")
             settings = getDefaultSettings()
