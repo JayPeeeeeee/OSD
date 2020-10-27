@@ -271,6 +271,8 @@ shm = ipc.SharedMemory(key, 0, 0)
 #camera.resolution = (640, 480)
 #rawCapture = PiRGBArray(camera, size=(640, 480))
 cap = cv.VideoCapture(0)
+cap.set(cv.CV_CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv.CV_CAP_PROP_FRAME_HEIGHT, 480)
 time.sleep(0.5)
 
 shm.attach()
