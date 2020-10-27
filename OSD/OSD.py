@@ -184,7 +184,7 @@ def initMenus():
 
 def createMenus():
     settings = getSettings()
-    print("Threshold: " + settings.threshold.value)
+    print("Threshold: " + str(settings.threshold.value))
 
     smtMenu = MenuItem()
     smtMenu.setting = settings.showMeanTemperature
