@@ -4,7 +4,7 @@ class Settings(object):
     """description of class"""
 
     def __init__(self):
-        self.showMeanTemperature
+        self.showMeanTemperature = None
         self.showFoundFace
         self.showWarmestZones
         self.screenPosition

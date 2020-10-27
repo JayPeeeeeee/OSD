@@ -277,7 +277,6 @@ while(True):
     
     if not areMenusActive:
         keyPressed = readInput()
-        print("key: " + str(keyPressed))
         if keyPressed != None:
             areMenusActive = True
             initMenus()
