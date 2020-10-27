@@ -31,6 +31,6 @@ class InputManager(object):
         self._buttonInput = ButtonInput.DOWN
 
     def read(self):
-        input = self.buttonInput
-        self.buttonInput = None
+        input = self._buttonInput
+        self._buttonInput = None
         return input
