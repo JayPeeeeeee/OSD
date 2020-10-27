@@ -30,6 +30,9 @@
     <Compile Include="InputManager.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LedDriver.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MenuItem.py">
       <SubType>Code</SubType>
     </Compile>

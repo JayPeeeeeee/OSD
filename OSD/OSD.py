@@ -14,6 +14,7 @@ from BooleanSetting import BooleanSetting
 from TupleSetting import TupleSetting
 from ColorSetting import ColorSetting
 from InputManager import InputManager
+from LedDriver import LedDriver
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 
@@ -26,6 +27,7 @@ root = None
 editToken = None
 buttonInput = None
 inputManager = InputManager(5, 6, 13)
+ledDriver = LedDriver(17, 27, 22)
 
 def readInput():
     global inputManager
@@ -296,6 +298,7 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
          #   print("Measure temp")
           #  print("Show LEDs")
     else:
+        ledDriver.output(0, 0, 0, 0)
         # Display the resulting frame
         if selectedMenu.menuItems != None and len(selectedMenu.menuItems) > 0:
             menuOffsetY = 30
