@@ -16,9 +16,14 @@ class LedDriver(object):
 
         GPIO.setup(b, GPIO.OUT)
         self.b = GPIO.PWM(b, 1000)
-        self.g.start(100)
+        self.b.start(100)
 
         
 
     def output(self, red, green, blue, brightness):
         print("R: " + str(red) + ", G: " + str(green) + ", B: " + str(blue) + " at " + str(brightness) + "%")
+
+    def stop():
+        self.r.stop()
+        self.g.stop()
+        self.b.stop()
