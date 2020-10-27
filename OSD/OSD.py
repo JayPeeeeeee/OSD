@@ -294,11 +294,14 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
         if keyPressed != None:
             areMenusActive = True
             initMenus()
-        #else:
-         #   print("Measure temp")
-          #  print("Show LEDs")
+        else:
+            # Measure temp
+            temp = random.randint(33, 38)
+            if temp > settings.threshold.value:
+                ledDriver.output(255, 0, 0, 100)
+            else:
+                ledDriver.output(0, 255, 0, 100)
     else:
-        ledDriver.output(0, 0, 0, 0)
         # Display the resulting frame
         if selectedMenu.menuItems != None and len(selectedMenu.menuItems) > 0:
             menuOffsetY = 30

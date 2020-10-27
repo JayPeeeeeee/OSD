@@ -7,14 +7,18 @@ class LedDriver(object):
         GPIO.setmode(GPIO.BCM)
 
         GPIO.setup(r, GPIO.OUT)
+        self.r = GPIO.PWM(r, 1000)
+        self.r.start(100)
 
         GPIO.setup(g, GPIO.OUT)
+        self.g = GPIO.PWM(g, 1000)
+        self.g.start(100)
 
         GPIO.setup(b, GPIO.OUT)
+        self.b = GPIO.PWM(b, 1000)
+        self.g.start(100)
 
         
 
     def output(self, red, green, blue, brightness):
         print("R: " + str(red) + ", G: " + str(green) + ", B: " + str(blue) + " at " + str(brightness) + "%")
-        pwm = GPIO.PWM(27, 1000)
-        pwm.start(50)
