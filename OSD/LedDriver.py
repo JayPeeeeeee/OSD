@@ -22,9 +22,9 @@ class LedDriver(object):
 
     def output(self, red, green, blue, brightness):
         print("R: " + str(red) + ", G: " + str(green) + ", B: " + str(blue) + " at " + str(brightness) + "%")
-        self.r.ChangeDutyCycle(self._map(red, 0, 255, 0, 100))
-        self.g.ChangeDutyCycle(self._map(green, 0, 255, 0, 100))
-        self.b.ChangeDutyCycle(self._map(blue, 0, 255, 0, 100))
+        self.r.ChangeDutyCycle(self._getDutyCycle(red))
+        self.g.ChangeDutyCycle(self._getDutyCycle(green))
+        self.b.ChangeDutyCycle(self._getDutyCycle(blue))
 
     def stop():
         self.r.stop()
@@ -32,5 +32,5 @@ class LedDriver(object):
         self.b.stop()
         GPIO.cleanup()
 
-    def _map(self, x, in_min, in_max, out_min, out_max):
-        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+    def _getDutyCycle(self, color):
+        return (color - 0) * (100 - 0) / (255 - 0) + 0
