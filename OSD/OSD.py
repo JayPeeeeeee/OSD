@@ -81,7 +81,7 @@ def getSettings():
             f.close()        
             print("OK R" + str(settings.okColor.red))
         else:
-            print(settingsFile + " is not a file, getting default settings")
+            print(settingsFile + " is not a file, getting default settings alo")
             settings = getDefaultSettings()
             saveSettings()
 
