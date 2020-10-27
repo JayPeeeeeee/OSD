@@ -16,5 +16,5 @@ class LedDriver(object):
 
     def output(self, red, green, blue, brightness):
         print("R: " + str(red) + ", G: " + str(green) + ", B: " + str(blue) + " at " + str(brightness) + "%")
-        pwm = GPIO.PWM(g, 1000)
+        pwm = GPIO.PWM(27, 1000)
         pwm.start(50)
