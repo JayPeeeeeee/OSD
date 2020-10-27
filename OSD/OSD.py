@@ -2,8 +2,7 @@ import os
 import cv2 as cv
 import jsonpickle
 import sysv_ipc as ipc
-import time
-import RPi.GPIO as GPIO   
+import time 
 from subprocess import call
 from threading import Thread
 from ButtonInput import ButtonInput
@@ -14,6 +13,7 @@ from NumberSetting import NumberSetting
 from BooleanSetting import BooleanSetting
 from TupleSetting import TupleSetting
 from ColorSetting import ColorSetting
+from InputManager import InputManager
 
 settingsFile = "..\OSD Settings.json"
 settings = None
@@ -23,10 +23,11 @@ selectedMenu = None
 root = None
 editToken = None
 buttonInput = None
+inputManager = InputManager(5, 6, 13)
 
 def readInput():
-    buttonInput = None
-    return 
+    global inputManager
+    return inputManager.read()
 
     #input = cv.waitKey(1) & 0xFF
 
@@ -258,12 +259,6 @@ def editSetting(setting, frame):
 def startDisplay():
     call(["../../SACLeptonRPi/SACDisplayMixer/OGLESSimpleImageWithIPC"])
    
-def my_callback(channel):  
-    print("Rising edge detected")
-
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
-GPIO.add_event_detect(5, GPIO.RISING, callback=my_callback)
 th1 = Thread(target=startDisplay)
 th1.start()
 time.sleep(1)

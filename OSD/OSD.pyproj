@@ -27,6 +27,9 @@
     <Compile Include="ColorSetting.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="InputManager.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MenuItem.py">
       <SubType>Code</SubType>
     </Compile>
