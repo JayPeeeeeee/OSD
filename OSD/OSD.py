@@ -297,7 +297,7 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
                 color = (0, 0, 255, 255)
                 if menuItem == activeMenu:
                     color = (0, 255, 0, 255)
-                cv.putText(frame, menuItem.getDisplayName(), (0,20 + menuOffsetY * menuItemNumber), cv.FONT_HERSHEY_SIMPLEX, 1, color, 1)
+                cv.putText(frame, menuItem.getDisplayName(), (0,50 + menuOffsetY * menuItemNumber), cv.FONT_HERSHEY_SIMPLEX, 1, color, 1)
                 menuItemNumber += 1
             if not handleMenuNavigation():
                 break;
