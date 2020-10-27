@@ -304,7 +304,9 @@ for frame in camera.capture_continuous(rawCapture, format="rgb", use_video_port=
             if editSetting(selectedMenu.setting, frame):
                 saveSettings()
                 exitMenus()
-
+                
+    key = cv2.waitKey(1) & 0xFF
+    rawCapture.truncate(0)
     shm.write(frame)
     
     
