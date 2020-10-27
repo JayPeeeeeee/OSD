@@ -307,8 +307,8 @@ while(True):
                 saveSettings()
                 exitMenus()
                 
-    key = cv.waitKey(1) & 0xFF
-    rawCapture.truncate(0)
+    #key = cv.waitKey(1) & 0xFF
+    #rawCapture.truncate(0)
     shm.write(frame)
     
     
