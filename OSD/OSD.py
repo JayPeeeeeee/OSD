@@ -277,7 +277,7 @@ shm.attach()
 
 for frame in camera.capture_continuous(rawCapture, format="rgb", use_video_port=True):
     # Capture frame-by-frame
-    ret, frame = cap.read()
+    #ret, frame = cap.read()
     
     if not areMenusActive:
         keyPressed = readInput()
