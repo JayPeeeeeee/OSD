@@ -280,9 +280,9 @@ while(True):
         if keyPressed != None:
             areMenusActive = True
             initMenus()
-        else:
-            print("Measure temp")
-            print("Show LEDs")
+        #else:
+         #   print("Measure temp")
+          #  print("Show LEDs")
     else:
         # Display the resulting frame
         if selectedMenu.menuItems != None and len(selectedMenu.menuItems) > 0:
