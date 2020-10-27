@@ -10,13 +10,13 @@ class InputManager(object):
         GPIO.setmode(GPIO.BCM)
 
         GPIO.setup(up, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
-        GPIO.add_event_detect(up, GPIO.RISING, callback=_onUpPressed)
+        GPIO.add_event_detect(up, GPIO.RISING, callback=self._onUpPressed)
 
         GPIO.setup(ok, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
-        GPIO.add_event_detect(ok, GPIO.RISING, callback=_onOkPressed)
+        GPIO.add_event_detect(ok, GPIO.RISING, callback=self._onOkPressed)
 
         GPIO.setup(down, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
-        GPIO.add_event_detect(down, GPIO.RISING, callback=_onDownPressed)
+        GPIO.add_event_detect(down, GPIO.RISING, callback=self._onDownPressed)
 
     def _onUpPressed(self):  
         print("Up!")
