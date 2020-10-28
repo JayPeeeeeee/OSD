@@ -290,7 +290,7 @@ def measureTemperature(image):
     thSampleCount = 0
     thSampleAcc = []
     thDataValid = False
-    nThSamplesToAverage = 6
+    nThSamplesToAverage = 0
 
     gray = cv.cvtColor(image, cv.COLOR_RGB2GRAY)
     rects = faceDet.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(180,180))
