@@ -284,7 +284,6 @@ def editSetting(setting, frame):
     return False
 
 def measureTemperature(image):
-    print("Measuring temp")
     global sensorWidth, sensorHeight, maxVal
 
     runningAvg = 0
@@ -313,10 +312,9 @@ def measureTemperature(image):
         for (top,right,bottom,left) in faceBoxes:
             cv.rectangle(image,(left,top),(right,bottom), (100,255,100), 1)
 
-    # get thermal image from Lepton
-    raw,_ = l.capture()
-    # find maximum value in raw lepton data array in thRoi (face1) slice of raw data.
-    if len(faceBoxes) > 0:
+        # get thermal image from Lepton
+        raw,_ = l.capture()
+        # find maximum value in raw lepton data array in thRoi (face1) slice of raw data.
         thRoi = cv.boundingRect(thFace1Cnts)
         x,y,w,h = thRoi
         # x any shold not be negative. Clip the values.
@@ -324,6 +322,7 @@ def measureTemperature(image):
         y = max(0, min(y, sensorHeight))
         thRoiData = raw[y:y+h, x:x+w]
         maxVal = np.amax(thRoiData)
+        print("max val: " + str(maxVal))
 	    # get running average over N thermal samples
         if (thSampleCount < nThSamplesToAverage):
             thSampleCount += 1
@@ -349,6 +348,7 @@ def measureTemperature(image):
     # draw roi if any
     if len(faceBoxes) > 0:
         x,y,w,h = thRoi
+
         cv.rectangle(raw, (x,y), (x+w,y+h), 255, 1)
     # make uint8 image
     thermal = np.uint8(raw)
