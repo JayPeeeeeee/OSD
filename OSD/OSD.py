@@ -340,21 +340,21 @@ def measureTemperature(image):
         del thSampleAcc[:]
         thDataValid = False
 
-    # text position
-    txtPosition = (500,50)
+    if thDataValid:
+        # text position
+        txtPosition = (500,50)
 
-    cv.normalize(raw, raw, 0, 65535, cv.NORM_MINMAX) # extend contrast
-    np.right_shift(raw, 8, raw) # fit data into 8 bits
-    # draw roi if any
-    if len(faceBoxes) > 0:
-        x,y,w,h = thRoi
-
-        cv.rectangle(raw, (x,y), (x+w,y+h), 255, 1)
-    # make uint8 image
-    thermal = np.uint8(raw)
-    # convert grayscale to BGR
-    thermal = cv.cvtColor(thermal, cv.COLOR_GRAY2BGR)
-    color = image
+        cv.normalize(raw, raw, 0, 65535, cv.NORM_MINMAX) # extend contrast
+        np.right_shift(raw, 8, raw) # fit data into 8 bits
+        # draw roi if any
+        if len(faceBoxes) > 0:
+            x,y,w,h = thRoi
+            cv.rectangle(raw, (x,y), (x+w,y+h), 255, 1)
+        # make uint8 image
+        thermal = np.uint8(raw)
+        # convert grayscale to BGR
+        thermal = cv.cvtColor(thermal, cv.COLOR_GRAY2BGR)
+        color = image
 
     # Put data on top of the image if a face was detected.
     if len(faceBoxes) == 1 and thDataValid:
