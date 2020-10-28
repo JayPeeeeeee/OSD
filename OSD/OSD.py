@@ -332,6 +332,7 @@ def measureTemperature(image):
             thSampleAcc.append(maxVal)
             thSampleAcc.pop(0)
             runningAvg = sum(thSampleAcc)/len(thSampleAcc)
+            print("running avg: " + str(runningAvg))
             maxCoord = np.where(thRoiData == maxVal)
     else:
 	    # No faces found.
