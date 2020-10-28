@@ -31,7 +31,7 @@ editToken = None
 buttonInput = None
 inputManager = InputManager(5, 6, 13)
 ledDriver = LedDriver(17, 27, 22)
-faceDet = cv2.CascadeClassifier("/home/pi//SACLeptonRPi/haarcascade_frontalface_default.xml")
+faceDet = cv.CascadeClassifier("/home/pi//SACLeptonRPi/haarcascade_frontalface_default.xml")
 l = Lepton()
 
 
