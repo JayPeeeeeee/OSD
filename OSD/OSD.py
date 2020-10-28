@@ -290,7 +290,7 @@ def measureTemperature(image):
     thSampleCount = 0
     thSampleAcc = []
     thDataValid = False
-    nThSamplesToAverage = 0
+    nThSamplesToAverage = 1
 
     gray = cv.cvtColor(image, cv.COLOR_RGB2GRAY)
     rects = faceDet.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(180,180))
@@ -323,17 +323,17 @@ def measureTemperature(image):
         thRoiData = raw[y:y+h, x:x+w]
         maxVal = np.amax(thRoiData)
         print("max val: " + str(maxVal))
+        print("in deg: " + str(float(runningAvg/100.0)-273.15)))
 	    # get running average over N thermal samples
-        if (thSampleCount < nThSamplesToAverage):
-            thSampleCount += 1
-            thSampleAcc.append(maxVal)
-        else:
-            thDataValid = True
-            thSampleAcc.append(maxVal)
-            thSampleAcc.pop(0)
-            runningAvg = sum(thSampleAcc)/len(thSampleAcc)
-            print("running avg: " + str(runningAvg))
-            maxCoord = np.where(thRoiData == maxVal)
+        #if (thSampleCount < nThSamplesToAverage):
+        #    thSampleCount += 1
+        #    thSampleAcc.append(maxVal)
+        #else:
+        #    thDataValid = True
+        #    thSampleAcc.append(maxVal)
+        #    runningAvg = sum(thSampleAcc)/len(thSampleAcc)
+        #    print("running avg: " + str(runningAvg))
+        #    maxCoord = np.where(thRoiData == maxVal)
     else:
 	    # No faces found.
         runningAvg = 0
