@@ -323,8 +323,7 @@ def measureTemperature(image):
         thRoiData = raw[y:y+h, x:x+w]
         maxVal = np.amax(thRoiData)
         print("max val: " + str(maxVal))
-        runningAvg = sum(thSampleAcc)/len(thSampleAcc)
-        print("in deg: " + str(float(runningAvg/100.0)-273.15))
+        print("in deg: " + str(float(maxVal/100.0)-273.15))
 	    # get running average over N thermal samples
         #if (thSampleCount < nThSamplesToAverage):
         #    thSampleCount += 1
