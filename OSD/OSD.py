@@ -284,6 +284,7 @@ def editSetting(setting, frame):
     return False
 
 def measureTemperature(image):
+    print("Measuring temp")
     global sensorWidth, sensorHeight, maxVal
 
     runningAvg = 0
@@ -347,8 +348,8 @@ def measureTemperature(image):
     np.right_shift(raw, 8, raw) # fit data into 8 bits
     # draw roi if any
     if len(faceBoxes) > 0:
-            x,y,w,h = thRoi
-            cv.rectangle(raw, (x,y), (x+w,y+h), 255, 1)
+        x,y,w,h = thRoi
+        cv.rectangle(raw, (x,y), (x+w,y+h), 255, 1)
     # make uint8 image
     thermal = np.uint8(raw)
     # convert grayscale to BGR
