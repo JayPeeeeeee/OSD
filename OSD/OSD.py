@@ -286,6 +286,17 @@ def editSetting(setting, frame):
 def measureTemperature(image):
     global sensorWidth, sensorHeight, maxVal
 
+    # Steps:
+    # 1) Find a face
+    # 2) Check if face size is good
+    # 3) If face size == good -> calibration of Lepton (FFC) + measure amb temp (currently this will be done via the lepton, later on we will use an external temp sensor)
+    # 4) Get Affine coords + set ROI
+    # 5) Get RIO data (can be repeated x amount of times to be sure)
+    # 6) If temp < threshold -> ok
+    # 7) Else -> inform the user that we are going to measure again
+
+
+
     runningAvg = 0
     thSampleCount = 0
     thSampleAcc = []
