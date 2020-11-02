@@ -118,7 +118,7 @@ class OSD(object):
 
     def run(self, image):
         print("Running OSD...")
-        if not areMenusActive:
+        if not self.areMenusActive:
             keyPressed = self.inputManager.read()
             if keyPressed != None:
                 areMenusActive = True
