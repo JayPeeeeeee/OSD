@@ -137,5 +137,5 @@ class OSD(object):
                 self.__handleMenuNavigation()
             else:        
                 if self.__editSetting(self.selectedMenu.setting, image):
-                    self.settingsManager.saveSettings(this.settings)
+                    self.settingsManager.saveSettings(self.settings)
                     self.__exitMenus()
