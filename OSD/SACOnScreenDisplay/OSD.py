@@ -43,7 +43,7 @@ class OSD(object):
             self.root.menuItems = self.__createMenus()
 
         self.activeMenu = self.root.menuItems[0]
-        self.selectedMenu = root
+        self.selectedMenu = self.root
 
     def __createMenus(self):
         self.settings = self.settingsManager.getSettings()
