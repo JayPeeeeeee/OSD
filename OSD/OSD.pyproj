@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>341a853f-bea0-4057-b8af-399a259bdac2</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OSD.py</StartupFile>
+    <StartupFile>Main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -41,7 +41,10 @@
     <Compile Include="NumberSetting.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="OSD.py" />
+    <Compile Include="Main.py" />
+    <Compile Include="SACOnScreenDisplay\OSD.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Setting.py">
       <SubType>Code</SubType>
     </Compile>
@@ -51,12 +54,18 @@
     <Compile Include="ButtonInput.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="SettingsManager.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="StateMachine.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TupleSetting.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SACOnScreenDisplay\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

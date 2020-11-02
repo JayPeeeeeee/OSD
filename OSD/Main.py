@@ -17,7 +17,7 @@ from InputManager import InputManager
 from SettingsManager import SettingsManager
 from LedDriver import LedDriver
 from StateMachine import StateMachine
-from OSD import OSD
+from .SACOnScreenDisplay.OSD import OSD
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 from Lepton import Lepton
