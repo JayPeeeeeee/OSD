@@ -130,7 +130,7 @@ class OSD(object):
                 menuItemNumber = 0
                 for menuItem in self.selectedMenu.menuItems:
                     color = (0, 0, 255, 255)
-                    if menuItem == activeMenu:
+                    if menuItem == self.activeMenu:
                         color = (0, 255, 0, 255)
                     cv.putText(image, menuItem.getDisplayName(), (20,20 + menuOffsetY * menuItemNumber), cv.FONT_HERSHEY_SIMPLEX, 1, color, 1)
                     menuItemNumber += 1
@@ -138,4 +138,4 @@ class OSD(object):
             else:        
                 if editSetting(self.selectedMenu.setting, image):
                     self.settingsManager.saveSettings(this.settings)
-                    exitMenus()
+                    self.__exitMenus()
