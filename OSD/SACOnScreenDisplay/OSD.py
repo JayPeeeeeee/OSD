@@ -21,7 +21,7 @@ class OSD(object):
         self.editToken = None
 
     def __handleMenuNavigation(self):
-        keyPressed = inputManager.read()
+        keyPressed = self.inputManager.read()
         activeMenuIndex = self.selectedMenu.menuItems.index(self.activeMenu)    
         
         if keyPressed == ButtonInput.UP:
