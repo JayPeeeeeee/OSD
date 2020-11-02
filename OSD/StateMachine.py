@@ -3,7 +3,7 @@ import cv2 as cv
 class StateMachine(object):
     """description of class"""
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         self.state = None
 
     def run(self, image):
@@ -18,6 +18,17 @@ class StateMachine(object):
         # 5) Get RIO data (can be repeated x amount of times to be sure)
         # 6) If temp < threshold -> ok
         # 7) Else -> inform the user that we are going to measure again
+
+                        # Measure temp
+        measureTemperature(frame)
+        temp = random.randint(33, 38)
+        brightness = settings.brightness.value
+        if temp > settings.threshold.value:
+            alarmColor = settings.alarmColor
+            ledDriver.output(alarmColor.red, alarmColor.green, alarmColor.blue, brightness)
+        else:
+            okColor = settings.okColor
+            ledDriver.output(okColor.red, okColor.green, okColor.blue, brightness)
 
         
         global sensorWidth, sensorHeight, maxVal
