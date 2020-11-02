@@ -139,7 +139,3 @@ class OSD(object):
                 if editSetting(self.selectedMenu.setting, image):
                     self.settingsManager.saveSettings(this.settings)
                     exitMenus()
-                
-        #key = cv.waitKey(1) & 0xFF
-        rawCapture.truncate(0)
-        shm.write(cv.flip(frame, 0))
