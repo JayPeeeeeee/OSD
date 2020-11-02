@@ -6,7 +6,7 @@ class StateMachine(object):
     def __init__(self, *args, **kwargs):
         self.state
 
-    def run(image):
+    def run(self, image):
 
         print("Running state machine")
 
