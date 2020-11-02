@@ -290,7 +290,7 @@ def measureTemperature(image):
     raw,_ = l.capture()
 
     maxVal = np.amax(raw)
-    print("max val: " + str(maxVal) + "in deg: " + str(float(maxVal/100.0)-273.15))
+    print("max val: " + str(maxVal))
 
 def startDisplay():
     call(["../../SACLeptonRPi/SACDisplayMixer/OGLESSimpleImageWithIPC"])
