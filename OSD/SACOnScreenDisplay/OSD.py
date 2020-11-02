@@ -23,7 +23,7 @@ class OSD(object):
     def __handleMenuNavigation(self):
         keyPressed = inputManager.read()
         activeMenuIndex = self.selectedMenu.menuItems.index(self.activeMenu)    
-
+        print("key: " + keyPressed)
         if keyPressed == ButtonInput.UP:
             if activeMenuIndex > 0:
                 self.activeMenu = self.selectedMenu.menuItems[activeMenuIndex - 1]
