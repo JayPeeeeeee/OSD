@@ -318,6 +318,7 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
     # else
     # if there was an input -> statemachine.stop() + OSD.Run()
     # else -> statemachine.run()
+
     
 
     if not areMenusActive:
