@@ -4,7 +4,7 @@ class StateMachine(object):
     """description of class"""
 
     def __init__(self, *args, **kwargs):
-        self.state
+        self.state = None
 
     def run(self, image):
 
