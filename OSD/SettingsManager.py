@@ -23,6 +23,7 @@ class SettingsManager(object):
             settings = jsonpickle.decode(f.read())
             f.close()        
             print("OK R" + str(settings.okColor.red))
+            print("Treshold: " + str(settings.threshold.value))
         else:
             print(self.settingsFile + " is not a file, getting default settings alo")
             settings = __getDefaultSettings()

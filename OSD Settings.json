@@ -32,8 +32,8 @@
     "threshold": {
         "py/object": "NumberSetting.NumberSetting",
         "name": "Threshold",
-        "value": 37.5,
-        "unit": "deg",
+        "value": 38.8,
+        "unit": "degs",
         "step": 0.1,
         "decimals": 1,
         "minimum": 35,
