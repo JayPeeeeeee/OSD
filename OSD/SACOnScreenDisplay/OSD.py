@@ -120,9 +120,8 @@ class OSD(object):
         print("Running OSD...")
         if not self.areMenusActive:
             keyPressed = self.inputManager.read()
-            print("key: " + str(keyPressed))
             if keyPressed != None:
-                areMenusActive = True
+                self.areMenusActive = True
                 self.__initMenus()
         else:
             # Display the resulting frame
