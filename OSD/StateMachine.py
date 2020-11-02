@@ -20,7 +20,7 @@ class StateMachine(object):
         # 7) Else -> inform the user that we are going to measure again
 
         
-        #global sensorWidth, sensorHeight, maxVal
+        global sensorWidth, sensorHeight, maxVal
 
         runningAvg = 0
         thSampleCount = 0

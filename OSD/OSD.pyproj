@@ -30,9 +30,11 @@
     <Compile Include="InputManager.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ioctl_numbers.py" />
     <Compile Include="LedDriver.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Lepton.py" />
     <Compile Include="MenuItem.py">
       <SubType>Code</SubType>
     </Compile>
@@ -47,6 +49,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ButtonInput.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StateMachine.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TupleSetting.py">
