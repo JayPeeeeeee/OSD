@@ -287,6 +287,10 @@ def editSetting(setting, frame):
 
 def measureTemperature(image):
     print("measuring")
+    raw,_ = l.capture()
+
+    maxVal = np.amax(raw)
+    print("max val: " + str(maxVal) + "in deg: " + str(float(maxVal/100.0)-273.15))
 
 def startDisplay():
     call(["../../SACLeptonRPi/SACDisplayMixer/OGLESSimpleImageWithIPC"])
