@@ -18,14 +18,20 @@ class InputManager(object):
         GPIO.setup(down, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
         GPIO.add_event_detect(down, GPIO.RISING, callback=self._onDownPressed)
 
-    def _onUpPressed(self, channel):  
+    def _onUpPressed(self, channel):
+        print("Up")
         self._buttonInput = ButtonInput.UP
 
     def _onOkPressed(self, channel):
+        print("Ok")
         self._buttonInput = ButtonInput.OK
 
     def _onDownPressed(self, channel):
+        print("Down")
         self._buttonInput = ButtonInput.DOWN
+
+    def hasInput(self):
+        return self._buttonInput != None
 
     def read(self):
         input = self._buttonInput
