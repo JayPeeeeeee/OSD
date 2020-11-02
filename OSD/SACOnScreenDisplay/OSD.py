@@ -49,51 +49,51 @@ class OSD(object):
         self.settings = self.settingsManager.getSettings()
 
         smtMenu = MenuItem()
-        smtMenu.setting = settings.showMeanTemperature
+        smtMenu.setting = self.settings.showMeanTemperature
 
         sffMenu = MenuItem()
-        sffMenu.setting = settings.showFoundFace
+        sffMenu.setting = self.settings.showFoundFace
 
         swzMenu = MenuItem()
-        swzMenu.setting = settings.showWarmestZones
+        swzMenu.setting = self.settings.showWarmestZones
 
         spMenu = MenuItem()
-        spMenu.setting = settings.screenPosition
+        spMenu.setting = self.settings.screenPosition
 
         sdMenu = MenuItem()
-        sdMenu.setting = settings.screenDimensions
+        sdMenu.setting = self.settings.screenDimensions
 
         viewItems = MenuItem()
         viewItems.name = "View"
         viewItems.menuItems = [smtMenu, sffMenu, swzMenu, spMenu, sdMenu]
 
         thresholdMenu = MenuItem()
-        thresholdMenu.setting = settings.threshold
+        thresholdMenu.setting = self.settings.threshold
 
         offsetMenu = MenuItem()
-        offsetMenu.setting = settings.offset
+        offsetMenu.setting = self.settings.offset
 
         epsilonMenu = MenuItem()
-        epsilonMenu.setting = settings.epsilon
+        epsilonMenu.setting = self.settings.epsilon
 
         mpmMenu = MenuItem()
-        mpmMenu.setting = settings.measurementsPerMean
+        mpmMenu.setting = self.settings.measurementsPerMean
 
         measureItems = MenuItem()
         measureItems.name = "Measure"
         measureItems.menuItems = [thresholdMenu, offsetMenu, epsilonMenu, mpmMenu]
 
         brightnessMenu = MenuItem()
-        brightnessMenu.setting = settings.brightness
+        brightnessMenu.setting = self.settings.brightness
 
         alarmColorMenu = MenuItem()
-        alarmColorMenu.setting = settings.alarmColor
+        alarmColorMenu.setting = self.settings.alarmColor
 
         okColorMenu = MenuItem()
-        okColorMenu.setting = settings.okColor
+        okColorMenu.setting = self.settings.okColor
 
         idleColorMenu = MenuItem()
-        idleColorMenu.setting = settings.idleColor
+        idleColorMenu.setting = self.settings.idleColor
 
         ledsItems = MenuItem()
         ledsItems.name = "LEDs"
