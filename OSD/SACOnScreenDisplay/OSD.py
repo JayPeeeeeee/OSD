@@ -105,7 +105,7 @@ class OSD(object):
         self.areMenusActive = False
 
     def __editSetting(self, setting, image):
-        setting.show(frame)
+        setting.show(image)
         #read GPIO
         buttonInput = self.inputManager.read()
         #edit + current stage
