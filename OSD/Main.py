@@ -1,4 +1,5 @@
 import os
+import cv2 as cv
 import sysv_ipc as ipc
 import time 
 from subprocess import call
