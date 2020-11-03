@@ -21,9 +21,7 @@ class SettingsManager(object):
             print("Reading settings from file")
             f = open(self.settingsFile, "r")
             settings = jsonpickle.decode(f.read())
-            f.close()        
-            print("OK R" + str(settings.okColor.red))
-            print("Treshold: " + str(settings.threshold.value))
+            f.close()
         else:
             print(self.settingsFile + " is not a file, getting default settings")
             settings = self.__getDefaultSettings()
@@ -33,7 +31,7 @@ class SettingsManager(object):
         return settings
 
     def __printSettings(self, settings):
-        print("Treshold: " + str(settings.threshold.value))
+        print("Treshold: " + str(settings.threshold.value) + str(settings.threshold.unit))
         print("Offset: " + str(settings.offset.value))
         print("MeasurementsPerMean: " + str(settings.measurementsPerMean.value))
 
