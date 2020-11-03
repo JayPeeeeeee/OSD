@@ -1,5 +1,6 @@
 import cv2 as cv
 import random
+import numpy as np
 from Lepton import Lepton
 from LedDriver import LedDriver
 from SettingsManager import SettingsManager
@@ -70,7 +71,7 @@ class StateMachine(object):
                 cv.rectangle(image,(left,top),(right,bottom), (100,255,100), 1)
 
             # get thermal image from Lepton
-            raw,_ = l.capture()
+            raw,_ = self.lepton.capture()
             # find maximum value in raw lepton data array in thRoi (face1) slice of raw data.
             thRoi = cv.boundingRect(thFace1Cnts)
             x,y,w,h = thRoi
