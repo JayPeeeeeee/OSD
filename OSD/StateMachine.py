@@ -14,7 +14,7 @@ class StateMachine(object):
     def run(self, image):
 
         print("Running state machine")
-        return
+        
 
         # Steps:
         # 1) Find a face
