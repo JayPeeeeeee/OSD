@@ -13,9 +13,9 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 
 settingsManager = SettingsManager()
-stateMachine = StateMachine(settingsManager)
 inputManager = InputManager(5, 6, 13)
 ledDriver = LedDriver(17, 27, 22)
+stateMachine = StateMachine(settingsManager, ledDriver)
 osd = OSD(inputManager, settingsManager)
 
 # Target screen is 12", 1024x768 or 768x1024 in portrait mode

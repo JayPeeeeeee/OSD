@@ -7,9 +7,10 @@ from SettingsManager import SettingsManager
 class StateMachine(object):
     """description of class"""
 
-    def __init__(self, settingsManager):
+    def __init__(self, settingsManager, ledDriver):
         self.state = None
         self.settingsManager = settingsManager
+        self.ledDriver = ledDriver
         self.faceDet = cv.CascadeClassifier("/home/pi//SACLeptonRPi/haarcascade_frontalface_default.xml")
         self.lepton = Lepton()
 
