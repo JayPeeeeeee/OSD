@@ -13,7 +13,7 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 
 settingsManager = SettingsManager()
-stateMachine = StateMachine()
+stateMachine = StateMachine(settingsManager)
 inputManager = InputManager(5, 6, 13)
 ledDriver = LedDriver(17, 27, 22)
 osd = OSD(inputManager, settingsManager)

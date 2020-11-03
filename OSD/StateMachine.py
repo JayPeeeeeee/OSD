@@ -2,12 +2,14 @@ import cv2 as cv
 import random
 from Lepton import Lepton
 from LedDriver import LedDriver
+from SettingsManager import SettingsManager
 
 class StateMachine(object):
     """description of class"""
 
-    def __init__(self):
+    def __init__(self, settingsManager):
         self.state = None
+        self.settingsManager = settingsManager
         self.faceDet = cv.CascadeClassifier("/home/pi//SACLeptonRPi/haarcascade_frontalface_default.xml")
         self.lepton = Lepton()
 
@@ -15,7 +17,7 @@ class StateMachine(object):
 
         print("Running state machine")
         
-
+        settings = self.settingsManager.getSettings()
         # Steps:
         # 1) Find a face
         # 2) Check if face size is good

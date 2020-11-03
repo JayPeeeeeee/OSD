@@ -13,19 +13,21 @@ class SettingsManager(object):
 
     def __init__(self):
         self.settingsFile = "/home/pi//OSD/OSD Settings.json"
+        self.settings = None
 
     def getSettings(self):
-        settings = None
-
-        if os.path.isfile(self.settingsFile):
-            print("Reading settings from file")
-            f = open(self.settingsFile, "r")
-            settings = jsonpickle.decode(f.read())
-            f.close()
+        if self.settings != None:
+            return self.settings
         else:
-            print(self.settingsFile + " is not a file, getting default settings")
-            settings = self.__getDefaultSettings()
-            self.saveSettings(settings)
+            if os.path.isfile(self.settingsFile):
+                print("Reading settings from file")
+                f = open(self.settingsFile, "r")
+                self.settings = jsonpickle.decode(f.read())
+                f.close()
+            else:
+                print(self.settingsFile + " is not a file, getting default settings")
+                self.settings = self.__getDefaultSettings()
+                self.saveSettings(self.settings)
 
         #self.__printSettings(settings)
         return settings
