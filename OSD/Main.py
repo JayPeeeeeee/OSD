@@ -1,18 +1,8 @@
 import os
-import cv2 as cv
 import sysv_ipc as ipc
 import time 
-import random
 from subprocess import call
 from threading import Thread
-from ButtonInput import ButtonInput
-from MenuItem import MenuItem
-from Settings import Settings
-from Setting import Setting
-from NumberSetting import NumberSetting
-from BooleanSetting import BooleanSetting
-from TupleSetting import TupleSetting
-from ColorSetting import ColorSetting
 from InputManager import InputManager
 from SettingsManager import SettingsManager
 from LedDriver import LedDriver
@@ -20,18 +10,12 @@ from StateMachine import StateMachine
 from SACOnScreenDisplay.OSD import OSD
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-from Lepton import Lepton
-import numpy as np
 
-buttonInput = None
 settingsManager = SettingsManager()
 stateMachine = StateMachine()
 inputManager = InputManager(5, 6, 13)
 ledDriver = LedDriver(17, 27, 22)
-faceDet = cv.CascadeClassifier("/home/pi//SACLeptonRPi/haarcascade_frontalface_default.xml")
-l = Lepton()
 osd = OSD(inputManager, settingsManager)
-
 
 # Target screen is 12", 1024x768 or 768x1024 in portrait mode
 screenWidth = 768
@@ -43,13 +27,6 @@ sensorHeight = 60
 corrVal = 0
 maxVal = 0
 feverThresh = 35.4
-
-def measureTemperature(image):
-    print("measuring")
-    raw,_ = l.capture()
-
-    maxVal = np.amax(raw)
-    print("max val: " + str(maxVal))
 
 def startDisplay():
     call(["../../SACLeptonRPi/SACDisplayMixer/OGLESSimpleImageWithIPC"])
@@ -76,8 +53,12 @@ for data in camera.capture_continuous(rawCapture, format="rgb", use_video_port=T
     # else
     # if there was an input -> statemachine.stop() + OSD.Run()
     # else -> statemachine.run()
-
-    osd.run(frame)
+    
+    if osd.isRunning() or inputManager.hasInput():
+        stateMachine.reset()
+        osd.run(frame)        
+    else:
+        stateMachine.run(frame)
                 
     #key = cv.waitKey(1) & 0xFF
     rawCapture.truncate(0)

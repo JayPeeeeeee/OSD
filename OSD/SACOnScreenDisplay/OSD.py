@@ -139,3 +139,6 @@ class OSD(object):
                 if self.__editSetting(self.selectedMenu.setting, image):
                     self.settingsManager.saveSettings(self.settings)
                     self.__exitMenus()
+
+    def isRunning(self):
+        return self.areMenusActive

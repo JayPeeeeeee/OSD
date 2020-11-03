@@ -1,14 +1,20 @@
 import cv2 as cv
+import random
+from Lepton import Lepton
+from LedDriver import LedDriver
 
 class StateMachine(object):
     """description of class"""
 
     def __init__(self):
         self.state = None
+        self.faceDet = cv.CascadeClassifier("/home/pi//SACLeptonRPi/haarcascade_frontalface_default.xml")
+        self.lepton = Lepton()
 
     def run(self, image):
 
         print("Running state machine")
+        return
 
         # Steps:
         # 1) Find a face
@@ -112,6 +118,8 @@ class StateMachine(object):
             else:
                 cv.putText(color, "{}degC".format(measTemp), txtPosition, cv.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,0,255),2)
 
-    def reset():
+    def reset(self):
         print("Resetting state machine")
+        self.state = None
+
 
