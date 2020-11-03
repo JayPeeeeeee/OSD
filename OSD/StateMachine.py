@@ -26,7 +26,7 @@ class StateMachine(object):
         # 7) Else -> inform the user that we are going to measure again
 
                         # Measure temp
-        measureTemperature(frame)
+        #measureTemperature(frame)
         temp = random.randint(33, 38)
         brightness = settings.brightness.value
         if temp > settings.threshold.value:
