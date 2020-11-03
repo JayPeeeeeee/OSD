@@ -27,7 +27,7 @@ class SettingsManager(object):
             settings = self.__getDefaultSettings()
             self.saveSettings(settings)
 
-        self.__printSettings(settings)
+        #self.__printSettings(settings)
         return settings
 
     def __printSettings(self, settings):
