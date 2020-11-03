@@ -34,10 +34,10 @@ class StateMachine(object):
         brightness = settings.brightness.value
         if temp > settings.threshold.value:
             alarmColor = settings.alarmColor
-            ledDriver.output(alarmColor.red, alarmColor.green, alarmColor.blue, brightness)
+            self.ledDriver.output(alarmColor.red, alarmColor.green, alarmColor.blue, brightness)
         else:
             okColor = settings.okColor
-            ledDriver.output(okColor.red, okColor.green, okColor.blue, brightness)
+            self.ledDriver.output(okColor.red, okColor.green, okColor.blue, brightness)
 
         
         global sensorWidth, sensorHeight, maxVal
