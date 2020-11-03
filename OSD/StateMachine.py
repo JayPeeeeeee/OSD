@@ -49,7 +49,7 @@ class StateMachine(object):
         nThSamplesToAverage = 1
 
         gray = cv.cvtColor(image, cv.COLOR_RGB2GRAY)
-        rects = faceDet.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(180,180))
+        rects = self.faceDet.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(180,180))
         faceBoxes = [(y,x+w, y+h, x) for (x,y,w,h) in rects]
         if len(faceBoxes) > 0:
             tcFace1 = faceBoxes[0] # true color ROI
