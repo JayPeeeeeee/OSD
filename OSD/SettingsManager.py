@@ -25,11 +25,17 @@ class SettingsManager(object):
             print("OK R" + str(settings.okColor.red))
             print("Treshold: " + str(settings.threshold.value))
         else:
-            print(self.settingsFile + " is not a file, getting default settings alo")
+            print(self.settingsFile + " is not a file, getting default settings")
             settings = __getDefaultSettings()
             self.saveSettings(settings)
 
+        __printSettings(settings)
         return settings
+
+    def __printSettings(settings):
+        print("Treshold: " + str(settings.threshold.value))
+        pritn("Offset: " + str(settings.offset.value))
+        print("MeasurementsPerMean: " + str(settings.measurementsPerMean.value))
 
     def __getDefaultSettings():
         settings = Settings()
