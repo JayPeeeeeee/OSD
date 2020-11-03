@@ -12,7 +12,7 @@ class SettingsManager(object):
     """description of class"""
 
     def __init__(self):
-        self.settingsFile = "..\OSD Settings.json"
+        self.settingsFile = "/home/pi//OSD/OSD Settings.json"
 
     def getSettings(self):
         settings = None
