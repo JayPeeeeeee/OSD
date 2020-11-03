@@ -52,6 +52,7 @@ class StateMachine(object):
         rects = self.faceDet.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(180,180))
         faceBoxes = [(y,x+w, y+h, x) for (x,y,w,h) in rects]
         if len(faceBoxes) > 0:
+            print("Detected face")
             tcFace1 = faceBoxes[0] # true color ROI
             # transform the coordinates from true color image space to thermal image space using the affine transform matrix M
             # See https://docs.opencv.org/2.4/modules/imgproc/doc/geometric_transformations.html
