@@ -30,7 +30,7 @@ class SettingsManager(object):
                 self.saveSettings(self.settings)
 
         #self.__printSettings(settings)
-        return settings
+        return self.settings
 
     def __printSettings(self, settings):
         print("Treshold: " + str(settings.threshold.value) + str(settings.threshold.unit))
