@@ -26,18 +26,18 @@ class SettingsManager(object):
             print("Treshold: " + str(settings.threshold.value))
         else:
             print(self.settingsFile + " is not a file, getting default settings")
-            settings = __getDefaultSettings()
+            settings = self.__getDefaultSettings()
             self.saveSettings(settings)
 
-        __printSettings(settings)
+        self.__printSettings(settings)
         return settings
 
-    def __printSettings(settings):
+    def __printSettings(self, settings):
         print("Treshold: " + str(settings.threshold.value))
         pritn("Offset: " + str(settings.offset.value))
         print("MeasurementsPerMean: " + str(settings.measurementsPerMean.value))
 
-    def __getDefaultSettings():
+    def __getDefaultSettings(self):
         settings = Settings()
         showMeanTemperature = BooleanSetting("Show mean temperature")
         showMeanTemperature.value = False
