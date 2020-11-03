@@ -34,7 +34,7 @@ class SettingsManager(object):
 
     def __printSettings(self, settings):
         print("Treshold: " + str(settings.threshold.value))
-        pritn("Offset: " + str(settings.offset.value))
+        print("Offset: " + str(settings.offset.value))
         print("MeasurementsPerMean: " + str(settings.measurementsPerMean.value))
 
     def __getDefaultSettings(self):
